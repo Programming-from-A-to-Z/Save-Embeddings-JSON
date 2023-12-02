@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an example Node.js application processes a text corpus, generates embeddings for "chunks", and saves the embeddings to a local file. The embeddings can be used in another application (like a [Retrieval Augmentated Generation system](https://github.com/Programming-from-A-to-Z/Example-RAG-Replicate) or [2D/3D clustering demonstration using UMAP dimensionality reduction](link to come))
+This is an example Node.js application processes a text corpus, generates embeddings for "chunks", and saves the embeddings to a local file. The embeddings can be used in another application (like a [Retrieval Augmentated Generation system](https://github.com/Programming-from-A-to-Z/Example-RAG-Replicate) or [2D/3D clustering demonstration using UMAP dimensionality reduction](https://editor.p5js.org/a2zitp/sketches/p63QTp0Sd))
 
 - `index.js`: Process a text file and generate embeddings.
 - `embeddings.json`: Precomputed embeddings generated from the text corpus.
