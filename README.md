@@ -8,6 +8,8 @@ This is an example Node.js application processes a text corpus, generates embedd
 - `embeddings.json`: Precomputed embeddings generated from the text corpus.
 - `.env`: API token
 
+![A map of clustered p5.js function names](clustering.png)
+
 ## References
 
 - [Using open-source models for faster and cheaper text embeddings](https://replicate.com/blog/run-bge-embedding-models)
