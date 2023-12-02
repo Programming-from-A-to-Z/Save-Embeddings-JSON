@@ -49,8 +49,10 @@ async function createEmbeddings(chunks) {
     // Add current batch embeddings
     embeddings = embeddings.concat(currentEmbeddings);
   }
+
+  const jsonOut = { embeddings };
   // Write the embeddings to a JSON file
   const fileOut = 'embeddings.json';
-  fs.writeFileSync(fileOut, JSON.stringify(embeddings));
+  fs.writeFileSync(fileOut, JSON.stringify(jsonOut));
   console.log(`Embeddings saved to ${fileOut}`);
 }
