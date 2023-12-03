@@ -58,7 +58,7 @@ node embeddings-replicate.js
 
 ### For transformers.js (embeddings-transformers.js)
 
-1. Generate the `embeddings.json` file. Adjust the text filename and splitting method as needed:
+2. Generate the `embeddings.json` file. Adjust the text filename and splitting method as needed:
 
 ```js
 const raw = fs.readFileSync('text-corpus.txt', 'utf-8');
