@@ -6,8 +6,8 @@ This is an example Node.js application processes a text corpus, generates embedd
 
 There are two main scripts in this project:
 
-- `embeddings-replicate.js``: Generates embeddings using the Llama model on Replicate.
-- `embeddings-transformers.js``: Generates embeddings using the bge-small model with transformers.js.
+- `embeddings-replicate.js`: Generates embeddings using the Llama model on Replicate.
+- `embeddings-transformers.js`: Generates embeddings using the bge-small model with transformers.js.
 
 Both scripts output the embeddings to `embeddings.json`.
 

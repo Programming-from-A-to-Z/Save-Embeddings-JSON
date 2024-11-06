@@ -1,12 +1,16 @@
 import * as fs from 'fs';
-import { pipeline } from '@xenova/transformers';
+import { pipeline } from '@huggingface/transformers';
 
 // Load the embeddings model
-const extractor = await pipeline('feature-extraction', 'Xenova/bge-small-en-v1.5');
+const extractor = await pipeline('feature-extraction', 'mixedbread-ai/mxbai-embed-large-v1', {
+  progress_callback: (x) => {
+    if (x.progress) process.stdout.write(`\r${Math.round(x.progress)}% loaded`);
+  },
+});
 
 // Read and split the transcript into chunks
-console.log('Reading source file...');
-const raw = fs.readFileSync('p5.txt', 'utf-8');
+console.log('\nReading source file...');
+const raw = fs.readFileSync('data/p5.txt', 'utf-8');
 let chunks = raw.split(/\n+/);
 
 // Trim each chunk and filter out empty strings
@@ -21,13 +25,13 @@ const outputJSON = { embeddings: [] };
 
 // Process chunks in batches
 for (let i = 0; i < chunks.length; i++) {
-  console.log(`Processing ${i + 1}/${Math.ceil(chunks.length)}`);
+  process.stdout.write(`\rProcessing ${i + 1}/${Math.ceil(chunks.length)}`);
 
   // Generate the embedding from text
   const output = await extractor(chunks[i], {
-    pooling: 'mean',
-    normalize: true,
+    pooling: 'cls',
   });
+
   // Extract the embedding output
   const embedding = output.tolist()[0];
 
@@ -36,6 +40,6 @@ for (let i = 0; i < chunks.length; i++) {
 }
 
 // Write the embeddings to a JSON file
-const fileOut = 'embeddings.json';
+const fileOut = 'embeddings/p5-embeddings-tf.json';
 fs.writeFileSync(fileOut, JSON.stringify(outputJSON));
-console.log(`Embeddings saved to ${fileOut}`);
+console.log(`\nEmbeddings saved to ${fileOut}`);
